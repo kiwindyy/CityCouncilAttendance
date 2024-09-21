@@ -15,15 +15,12 @@ cleaned_data <-
   raw_data |>
   janitor::clean_names() |>
   filter(committee == "City Council") |> 
-  #change from Y = present to 1 and N = absent to 0
-  mutate(present = ifelse(present == "Y", 1, 0)) |>
   #removing day from date 
   separate(col = session_date,
            into = c("session_year", "session_month"),
            sep = "-") |> 
   #selects columns of interest
-  select(first_name, last_name, committee, 
-         session_year, session_month, session_type, present)
+  select(committee, session_year, session_month, session_type, present)
 
 #### Save data ####
 write_csv(cleaned_data, "data/cleaned_data/cleaned_data.csv")
