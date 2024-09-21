@@ -5,7 +5,6 @@
 # Contact: w.yuan@mail.utoronto.ca
 
 #### Workspace setup ####
-
 library(opendatatoronto)
 library(dplyr)
 

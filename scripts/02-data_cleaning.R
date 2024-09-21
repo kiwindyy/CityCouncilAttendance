@@ -7,6 +7,7 @@
 #### Workspace setup ####
 library(tidyverse)
 library(dplyr)
+library(lubridate)
 
 #### Clean data ####
 raw_data <- read_csv("data/raw_data/unedited_data.csv")
@@ -15,11 +16,15 @@ cleaned_data <-
   raw_data |>
   janitor::clean_names() |>
   filter(committee == "City Council") |> 
-  #removing day from date 
+  # changing present to be more readable
+  mutate(present = ifelse(present == "Y", "Yes", "No")) |>
+  # removing day from date 
   separate(col = session_date,
            into = c("session_year", "session_month"),
            sep = "-") |> 
-  #selects columns of interest
+  # changing months from numbers to words
+  mutate(session_month = month.abb[as.numeric(session_month)]) |>
+  # selects columns of interest
   select(committee, session_year, session_month, session_type, present)
 
 #### Save data ####

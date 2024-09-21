@@ -3,7 +3,6 @@ title: "My title"
 subtitle: "My subtitle if needed"
 author: 
   - Wendy Yuan
-thanks: "Code and data are available at: LINK."
 date: "27 September 2024"
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
@@ -22,10 +21,28 @@ library(dplyr)
 
 cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 ```
+\newpage
 
 # Introduction
 
 # Data {#sec-data}
+
+
+
+```{r}
+#| label: fig-count
+#| fig-cap: Count of Number of Sessions per Year, Month, & Type
+#| echo: false
+
+table(cleaned_data$session_type)
+
+cleaned_data$session_month <- factor(cleaned_data$session_month, levels = month.abb)
+table(cleaned_data$session_month)
+
+table(cleaned_data$session_year)
+```
+
+
 
 ```{r}
 #| label: fig-session_type
@@ -33,7 +50,12 @@ cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 #| echo: false
 
 ggplot(cleaned_data, aes(x = session_type, fill = present)) +
-  geom_bar(position = "dodge2") 
+  geom_bar(position = "dodge2") + 
+  labs(
+    title = "Present vs Absence in Different Session Types",
+    x = "Session Type",
+    y = "Count"
+  )
 ```
 
 
@@ -45,19 +67,29 @@ ggplot(cleaned_data, aes(x = session_type, fill = present)) +
 
 cleaned_data |> 
   ggplot(aes(x = session_month, fill = present)) +
-  geom_bar(position = "dodge2") 
+  geom_bar(position = "dodge2") + 
+  labs(
+    title = "Present vs Absence Over Different Months",
+    x = "Months",
+    y = "Count"
+  )
 ```
 
 
 
 ```{r}
 #| label: fig-session_year
-#| fig-cap: Comparison of Attendance between 2022 & 2024
+#| fig-cap: Comparison of Attendance between 2022 to 2024
 #| echo: false
 
 cleaned_data |> 
   ggplot(aes(x = session_year, fill = present)) +
-  geom_bar(position = "dodge2") 
+  geom_bar(position = "dodge") + 
+  labs(
+    title = "Present vs Absence Over Different Years",
+    x = "Years",
+    y = "Count"
+  )
 ```
 
 
