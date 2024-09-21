@@ -26,4 +26,4 @@ cleaned_data <-
          session_year, session_month, session_type, present)
 
 #### Save data ####
-write_csv(cleaned_data, "data/analysis_data/cleaned_data.csv")
+write_csv(cleaned_data, "data/cleaned_data/cleaned_data.csv")

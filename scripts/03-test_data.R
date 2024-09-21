@@ -11,7 +11,7 @@ raw_data <- read_csv("data/raw_data/unedited_data.csv")
 all(is.na(raw_data))
 
 #### Tests cleaned data ####
-cleaned_data <- read_csv("data/analysis_data/cleaned_data.csv")
+cleaned_data <- read_csv("data/cleaned_data/cleaned_data.csv")
 
 # Test for NAs
 cleaned_data$committee == "City Council"

@@ -10,25 +10,19 @@ library(tidyverse)
 #### Simulate data ####
 set.seed(304)
 
-# Define the start and end date
-start_date <- as.Date("2018-01-01")
-end_date <- as.Date("2023-12-31")
+observations <- 100
+year <- c(2022:2024)
+months <- c(1:12)
+type <- c("morning", "afternoon")
 
-# Set the number of random dates you want to generate
-number_of_dates <- 100
+session_type <- sample(type, observations, replace = TRUE)
+session_year <- sample(year, observations, replace = TRUE)
+session_month <- sample(months, observations, replace = TRUE)
+attendance <- rbinom(observations, 1, 0.75)
 
-data <-
-  tibble(
-    dates = as.Date(
-      runif(
-        n = number_of_dates,
-        min = as.numeric(start_date),
-        max = as.numeric(end_date)
-      ),
-      origin = "1970-01-01"
-    ),
-    number_of_marriage = rpois(n = number_of_dates, lambda = 10)
-  )
+sim_data <- 
+  data.frame(session_type, session_year, session_month, attendance)
 
 #### Write_csv
-write_csv(data, file = "data/raw_data/simulated.csv")
+write_csv(sim_data, file = "data/simulated_data/simulated_data.csv")
+
