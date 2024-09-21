@@ -1,15 +1,17 @@
 #### Preamble ####
-# Purpose: Tests... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
-# License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Purpose: Tests the city council attendance data
+# Author: Wendy Yuan
+# Date: 27 September 2024
+# Contact: w.yuan@mail.utoronto.ca
 
+#### Tests raw data ####
+raw_data <- read_csv("data/raw_data/unedited_data.csv")
 
-#### Workspace setup ####
-library(tidyverse)
-# [...UPDATE THIS...]
+# Test for NAs
+all(is.na(raw_data))
 
-#### Test data ####
+#### Tests cleaned data ####
+cleaned_data <- read_csv("data/analysis_data/cleaned_data.csv")
+
+# Test for NAs
+cleaned_data$committee == "City Council"

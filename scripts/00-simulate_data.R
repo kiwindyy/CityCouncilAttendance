@@ -30,6 +30,5 @@ data <-
     number_of_marriage = rpois(n = number_of_dates, lambda = 10)
   )
 
-
 #### Write_csv
 write_csv(data, file = "data/raw_data/simulated.csv")
