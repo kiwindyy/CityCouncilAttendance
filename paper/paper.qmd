@@ -1,11 +1,11 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Investigating Toronto City Council Attendance"
+subtitle: "Determining the Ideal Meeting Types and Months for the 2022-2026 Term"
 author: 
   - Wendy Yuan
 date: "27 September 2024"
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "This paper looks at Toronto City Council attendance data and when meeting absences are highest and lowest. It specifically examines that evening meeting have greater absence rate compared to morning and afternoon. 2022 showed very little absences while 2023 showed many missed attendances. Additionally, March, May, July, and October have are greater proportion of absences - showing a pattern that every couple months has less attendance."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -21,9 +21,12 @@ library(dplyr)
 
 cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 ```
+
 \newpage
 
 # Introduction
+
+
 
 # Data {#sec-data}
 
