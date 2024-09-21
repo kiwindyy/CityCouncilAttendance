@@ -1,4 +1,5 @@
 #### Preamble ####
+# Purpose: Downloads and saves the data from Open Data Toronto
 # Author: Wendy Yuan
 # Date: 27 September 2024
 # Contact: w.yuan@mail.utoronto.ca
