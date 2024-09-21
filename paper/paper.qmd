@@ -1,11 +1,11 @@
 ---
-title: "Investigating Toronto City Council Attendance"
+title: "Investigating Trends of Absences in Toronto City Council Attendance between 2022 to 2024"
 subtitle: "Determining the Ideal Meeting Types and Months for the 2022-2026 Term"
 author: 
   - Wendy Yuan
 date: "27 September 2024"
 date-format: long
-abstract: "This paper looks at Toronto City Council attendance data and when meeting absences are highest and lowest. It specifically examines that evening meeting have greater absence rate compared to morning and afternoon. 2022 showed very little absences while 2023 showed many missed attendances. Additionally, March, May, July, and October have are greater proportion of absences - showing a pattern that every couple months has less attendance."
+abstract: "This paper looks at Toronto City Council attendance data and when meeting absences are highest and lowest. As Toronto City Council members are elected, it is expected that they attend meetings to voice the opinions of the population. Examining the data found that alternating months and evenings have greater absences. By identifying trends of absences, meetings can be better schedules to optimize efficiency and attendance."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -26,7 +26,15 @@ cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 
 # Introduction
 
+In a democracy, individuals are expected to contribute their voices through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. So, the elected members of the Toronto City Council must attend their meetings to express their concerns to the population. 
 
+This paper looks at the attendance of Toronto City Council members since the beginning of the 2022 term. The data used in this paper can be found on Open Data Toronto. First, this paper looks at the distribution of when most meetings are held to understand the data and biases better. Session type, month and year are examined to see if any trends can be avoided in the future to increase attendance. 
+
+Session type refers to whether the session was held in the morning, afternoon, or evening. Session month shows which month the meeting was held likewise session year in which year the meeting happened. Finally, the present variable shows their attendance with yes if they were present and no if they were not. 
+
+This paper found a trend of alternating months in absence, where one month will have high absence and the next will have low absence. Evening sessions also tended to have more absences. In 2022, there were very few absences while 2023 showed the opposite and 2024 has shown to stay in between for now. 
+
+This paper is structured by beginning with the abstract and introduction. The remainder looks at how the data was cleaned, a table summarizing meeting types, and examines how each variable influences the attendance of City Council members. 
 
 # Data {#sec-data}
 
@@ -96,7 +104,5 @@ cleaned_data |>
 ```
 
 
-
-\newpage
 
 # References

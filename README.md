@@ -1,8 +1,8 @@
-# City Council Attendance Investigation
+# Investigating Trends of Absences in Toronto City Council Attendance between 2022 to 2024
 
 ## Overview
 
-This paper aims to observe trends in Toronto City Council meeting attendance. Drawn from data available on Open Data Toronto and using R to analysis the data, many trends can be found. First, the data was organized removing unnecessary variables and updated to make existing ones more readable. Producing graphs showed results of higher rates of absences in evening meetings. 2022 as the beginning of this term showed low absence rates whereas 2023 contrasted with high absences. Finally, data displayed trends of high attendance every other month. 
+This paper aims to observe trends in Toronto City Council meeting attendance. Drawn from data available on Open Data Toronto and using R to analysis the data, many trends can be found. By identifying trends in absences, meetings can be scheduled more effectively to have most members present. First, the data was organized, removing unnecessary variables and updated to make existing ones more readable. Producing graphs showed results of higher rates of absences in evening meetings. 2022 as the beginning of this term showed low absence rates whereas 2023 contrasted with high absences. Finally, data displayed trends of high attendance every other month. Avoiding periods of lower attendance can help maximize the efficiency of meetings. 
 
 ## File Structure
 
