@@ -38,7 +38,11 @@ This paper is structured by beginning with the abstract and introduction. The re
 
 # Data {#sec-data}
 
+To investigate the attendance of Toronto City Council members data is retrieved from Open Data Toronto. The raw data contained columns of Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, Present. After importing the data into R, it was cleaned to make it more readable and contain only the necessary variables. Tests were also run on the data to make sure it is city council member data and no empty rows are there. 
 
+First, the session date was made more readable by separating the year and month. Additionally, the month was changed to the word abbreviation form. The present variable was also made more readable by changing Y to Yes and N to No. Finally, the columns of interest, committee, session year, session month, session type, and present, were selected to be created into a new cleaned dataset. 
+
+Between the different variables, type, month and year, they each have different frequency. Understanding the frequency, can help better understand the outcome of the data. Thus, three tables were made counting how many meetings were done in each circumstance. 
 
 ```{r}
 #| label: fig-count
@@ -53,7 +57,9 @@ table(cleaned_data$session_month)
 table(cleaned_data$session_year)
 ```
 
+It can be seen that there are significantly less evening meetings while afternoon meetings are most common. Noticeably, January has no meetings likely because of external reasons. Meeting frequency of different months seem to change with no particular pattern. Finally, 2023 had the most meetings simply because it had the most time. 
 
+First, to analysis which meeting type is best a bar chart is created comparing morning, afternoon, and evening times. 
 
 ```{r}
 #| label: fig-session_type
@@ -69,7 +75,9 @@ ggplot(cleaned_data, aes(x = session_type, fill = present)) +
   )
 ```
 
+@fig-session_type has x-axis as the session type and y-axis as the count of how many times each meeting type occurred. The blue bars are the number of attendances while the red bars are the number of absences. It can be seen that afternoon has the most absences but it also has the most attendance. Notably, while evenings occurrences are low it still has a decent amount of absences. From the data, meetings would be better held during the afternoon or morning for the best attendance. 
 
+Next, to find out which month had the best attendance rate a bar chart was graphed. The x-axis is the months and the y-axis is the count. 
 
 ```{r}
 #| label: fig-session_month
@@ -86,7 +94,9 @@ cleaned_data |>
   )
 ```
 
+In @fig-session_month the blue bars is the count of attendance during the month and the red bars is the count of absences. There is a rough pattern where alternating months will have higher absences, such as March, May, and July. A pattern can not be determined for the attendance rather it reflect the frequency meetings were held according to months. In conclusion, finding out what causes the pattern of absence would help increase attendance in those months. 
 
+Finally, a comparison between the years since the beginning of the term was done by plotting a bar chat. 
 
 ```{r}
 #| label: fig-session_year
@@ -103,6 +113,10 @@ cleaned_data |>
   )
 ```
 
+@fig-session_year has x-axis of years and y-axis counting attendance. The blue bars is the attendance of those who went to meetings while red bars counts those absent. Like how there were many meetings conducted in 2023 there are also many absence which makes sense. Therefore, it is likely that as 2024 continues the absences will increase showing similar pattern to 2023. Meanwhile, 2022 in this bar chart show little to no absent which may be due to external factors. Overall, investigating which meeting type, month and year gives an idea as to what causes absences during meetings but more variables should be looked at to get a bigger and better picture of the circumstances.
 
+\newpage
 
 # References
+
+TODO: figure out how to do references + in text references 
