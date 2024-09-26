@@ -7,6 +7,7 @@
 #### Workspace setup ####
 library(opendatatoronto)
 library(dplyr)
+library(readr)
 
 # get package
 package <- show_package("9426c94d-abdb-45fe-9a81-79be40d204d2")
