@@ -22,12 +22,13 @@ library(tidyverse)
 library(dplyr)
 library(readr)
 library(ggplot2)
+library(knitr)
 
 cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 raw_data <- read_csv(here::here("data/raw_data/unedited_data.csv"))
 ```
 
-# Introduction
+# Introduction {#sec-intro}
 
 The Canadian parliamentary system is a democracy, where the population is represented in government by a selection of elected officials. To maintain the democratic structure, individuals should engage in political participation to have their voices represented, primarily through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. Otherwise, failing to do so will cause a decrease in trust in the government. So, it is the job of the elected members of the Toronto City Council to attend their meetings and express the concerns of the population they represent. 
 
@@ -35,7 +36,7 @@ This paper looks at the absences of Toronto City Council members since the begin
 
 The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, Michael Thompson, Jaye Robinson, and Vincent Crisanti were found to have the most absences Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
-The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows a graphical visualization of the data from section 2 and explains some trends that can be seen. Finally, section 4 covers interpretations of the data from section 3 and any weaknesses of this study. 
+The paper is structured as follows: [@sec-data] discusses the raw and clean data used in the study and any limitations in the dataset. [@sec-results] shows a graphical visualization of the data from [@sec-data] and explains some trends that can be seen. Finally, [@sec-discussion] covers interpretations of the data from [@sec-results] and any weaknesses of this study. 
 
 # Data {#sec-data}
 
@@ -46,20 +47,24 @@ The data used to investigate the attendance of Toronto City Council members is f
 
 ```{r echo=FALSE}
 #| label: tbl-raw-data
-head(raw_data, 10)
+#| tbl-cap: Raw Data of Toronto City Council Members' Attendance
 
+# generate first 10 observations of raw data
+kable(head(raw_data, 10)) 
 ```
 
 The raw dataset features `r ncol(raw_data)` variables and `r nrow(raw_data)` observations. @tbl-raw-data shows the first 10 observations of the `r ncol(raw_data)` variables: _id, Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, and Present. ‘_id’ is the number associated with each observation. ‘Term’ shows which term the council members are a part of, which is 2022-2026 as this is the timeframe we are interested in. The ‘First name’ and ‘last name’ variables are the first and last names of each council member. ‘Committee’ is the committee the council member is a part of and in this paper, we are only looking at the City Council. ‘MTG #’ is the short form of meeting number. ‘Session Date’ refers to the day the session was held, in year-month-date format. ‘Session Type’ specifies whether the meeting took place during the Morning, Afternoon, or Evening. ‘Session Start-End Time’ gives the exact time the session was held. Finally, ‘Present’ marks whether the City Council member was present or absent. 
 
 ## Cleaning Data
 
-After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in Section 3. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
+After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in [@sec-results]. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
 
 ```{r echo=FALSE}
 #| label: tbl-cleaned-data
-head(cleaned_data, 10)
+#| tbl-cap: Cleaned Data of Toronto City Council Members' Attendance
 
+# generate first 10 observations of cleaned data
+kable(head(raw_data, 10)) 
 ```
 The key variables of interest are name, committee, session year, session type, and present. First and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is decoded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables as seen in @tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
 
@@ -69,7 +74,7 @@ There were no similar datasets containing information about the attendance of To
 
 A limitation faced by this dataset is that some sessions are closed sessions. Closed sessions are those “closed to the public under sections 27-38 of the Council Procedures by law” (@toronto-city-council-attendance). These closed sessions could be viewed as null observations potentially altering the results of data analysis. Another limitation of this dataset is the lack of information on the reason for absence. City Council members could have valid excuses such as illness or urgent emergencies. Without this information, the conclusions lack the reasoning behind the results. 
 
-# Results
+# Results {#sec-results}
 
 ## Toronto City Council member's absence
 
@@ -77,7 +82,7 @@ Graphs can help better understand the relationships between each variable and th
 
 ```{r}
 #| label: fig-session-member
-#| fig-cap: Comparision of Absences by name
+#| fig-cap: Comparision of Absences by City Council Member
 #| echo: false
 
 # Filter the data for absences (where 'present' is 'No') and count them by name
@@ -86,6 +91,7 @@ absence_by_member <- cleaned_data %>%
   group_by(name) %>%
   summarise(absence_count = n())
 
+# generate graph for number of absences by each member
 ggplot(absence_by_member, aes(x = reorder(name, -absence_count), y = absence_count)) +
   geom_bar(stat = "identity", fill = "cyan3") +
   labs(
@@ -101,11 +107,11 @@ In @fig-session-member the taller the bar is the more absences that City Council
 
 ## Toronto City Council absence over time since 2022
 
-To further our understanding of the data, @fig-session-year compares the number of member absences over the years since the beginning of the term. The x-axis is the years since the beginning of the term and the y-axis counts the number of absences. 
+To further our understanding of the data, @fig-session-year compares the number of member absences over the years since the beginning of the term. The x-axis is the years since the beginning of the term until the present year and the y-axis counts the number of absences. 
 
 ```{r}
 #| label: fig-session-year
-#| fig-cap: Comparison of Member Absences by Year
+#| fig-cap: Comparison of Absences by Year
 #| echo: false
 
 # Filter the data to only include rows where members were absent (present == "No")
@@ -118,9 +124,9 @@ absent_data <- cleaned_data %>%
 ggplot(absent_data, aes(x = session_year, y = absence_count)) +
   geom_bar(stat = "identity", fill = "cyan3") +  # Use a bar plot and custom color
   labs(
-    title = "# absence over years 2022-2024",
+    title = "Number of Absence Over Years 2022-2024",
     x = "Year",
-    y = "# Absences"
+    y = "Number of Absences"
   ) +
   theme_minimal()
 ```
@@ -133,7 +139,7 @@ The type of session may also influence whether the City Council member is presen
 
 ```{r}
 #| label: fig-session-type
-#| fig-cap: Comparison of Attendance by session type between 2022 to 2024
+#| fig-cap: Comparison of Absences by Session Type
 #| echo: false
 
 # Filter the data for absences (present == "No") and group by session type
@@ -146,16 +152,16 @@ absence_data <- cleaned_data %>%
 ggplot(absence_data, aes(x = session_type, y = absence_count)) +
   geom_bar(stat = "identity", fill = "cyan3") +  # Use horizontal bar plot and a custom color
   labs(
-    title = "# absence of different mettings types",
-    x = "Type",
-    y = "# Absences"
+    title = "Number Absence for Different Meetings Types",
+    x = "Session Type",
+    y = "Number of Absences"
   ) +
   theme_minimal()
 ```
 
-# Discussion
+# Discussion {#sec-discussion}
 
-@fig-session-member from Section 3 laid out the information about the absences of each Toronto City Council member. It can be seen that Michael Thompson has the highest absences, followed by Jaye Robinson and Vincent Crisanti. While Amber Morley, Olivia Chow, and Paula Fletcher have missed few meetings. The variation between members could be problematic especially when the council member fails to represent the population. Additionally, it could suggest differences in engagement, personal schedules, or emergency circumstances. Determining those with the most absences allows steps to be taken to help better accommodate their schedules. 
+@fig-session-member from [@sec-results] laid out the information about the absences of each Toronto City Council member. It can be seen that Michael Thompson has the highest absences, followed by Jaye Robinson and Vincent Crisanti. While Amber Morley, Olivia Chow, and Paula Fletcher have missed few meetings. The variation between members could be problematic especially when the council member fails to represent the population. Additionally, it could suggest differences in engagement, personal schedules, or emergency circumstances. Determining those with the most absences allows steps to be taken to help better accommodate their schedules. 
 
 @fig-session-type shows that afternoon meetings have more absences than morning or evening ones. The timing of the meetings could be a factor contributing to the absences of council members. This pattern could mean that members are facing conflicting schedules. Morning sessions show a significant decrease in absences so the earlier timing could allow better attendance. Finally, evening sessions saw the lowest absence rate possibly providing an alternative meeting time. Understanding the effects of session timing on attendance would lead to better and more engaging discussions about policies as more members are present to voice their opinions. 
 
