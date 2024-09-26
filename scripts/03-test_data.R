@@ -4,6 +4,8 @@
 # Date: 27 September 2024
 # Contact: w.yuan@mail.utoronto.ca
 
+library(readr)
+
 #### Tests raw data ####
 raw_data <- read_csv("data/raw_data/unedited_data.csv")
 

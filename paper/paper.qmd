@@ -6,7 +6,7 @@ author:
 thanks: "GitHub repo link: https://github.com/kiwindyy/CityCouncilAttendance"
 date: "27 September 2024"
 date-format: long
-abstract: "This paper looks at Toronto City Council attendance data and when meeting absences are highest and lowest. As Toronto City Council members are elected, it is expected that they attend meetings to voice the opinions of the population. Examining the data found that alternating months and evenings have greater absences. By identifying trends of absences, meetings can be better schedules to optimize efficiency and attendance."
+abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@ ). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences by ___ members which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -19,6 +19,7 @@ bibliography: references.bib
 
 library(tidyverse)
 library(dplyr)
+library(readr)
 
 cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 raw_data <- read_csv(here::here("data/raw_data/unedited_data.csv"))
@@ -26,15 +27,13 @@ raw_data <- read_csv(here::here("data/raw_data/unedited_data.csv"))
 
 # Introduction
 
-In a democracy, individuals are expected to contribute their voices through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. So, the elected members of the Toronto City Council must attend their meetings to express their concerns to the population. 
+The Canadian parliamentary system is a democracy, where the population is represented in government by a selection of elected officials. To maintain the democratic structure, individuals should engage in political participation to have their voices represented, primarily through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. Otherwise, failing to do so will cause a decrease in trust in the government. So, it is the job of the elected members of the Toronto City Council to attend their meetings and express the concerns of the population they represent. 
 
-This paper looks at the attendance of Toronto City Council members since the beginning of the 2022 term. The data used in this paper can be found on Open Data Toronto. First, this paper looks at the distribution of when most meetings are held to understand the data and biases better. Session type, month and year are examined to see if any trends can be avoided in the future to increase attendance. 
+This paper looks at the absences of Toronto City Council members since the beginning of the 2022 term. The data used in this paper is found on Open Data Toronto (@ ). The study examines which council members have the highest rates of absence, the fluctuation of absences over time, and which meeting type has the most absences. This paper works to fill the gap of focused analysis on absences patterns within the City Council which directly relates to the effectiveness of representation by council members. 
 
-Session type refers to whether the session was held in the morning, afternoon, or evening. Session month shows which month the meeting was held likewise session year in which year the meeting happened. Finally, the present variable shows their attendance with yes if they were present and no if they were not. 
+The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, ___ members were found to have the most absences. Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
-This paper found a trend of alternating months in absence, where one month will have high absence and the next will have low absence. Evening sessions also tended to have more absences. In 2022, there were very few absences while 2023 showed the opposite and 2024 has shown to stay in between for now. 
-
-This paper is structured by beginning with the abstract and introduction. The remainder looks at how the data was cleaned, a table summarizing meeting types, and examines how each variable influences the attendance of City Council members. 
+The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows graphical visualization of the analysis results using data from section 2. Finally, section 4 covers interpretations of each graph from section 3 and any weaknesses of this study. 
 
 # Data {#sec-data}
 
