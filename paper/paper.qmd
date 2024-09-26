@@ -6,7 +6,7 @@ author:
 thanks: "GitHub repo link: https://github.com/kiwindyy/CityCouncilAttendance"
 date: "27 September 2024"
 date-format: long
-abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@toronto-city-council-attendance). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences by ___ members which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
+abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@toronto-city-council-attendance). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
 format: pdf
 toc: true
 number-sections: true
@@ -33,7 +33,7 @@ The Canadian parliamentary system is a democracy, where the population is repres
 
 This paper looks at the absences of Toronto City Council members since the beginning of the 2022 term. The data used in this paper is found on Open Data Toronto (@toronto-city-council-attendance). The study examines which council members have the highest rates of absence, the fluctuation of absences over time, and which meeting type has the most absences. This paper works to fill the gap of focused analysis on absences patterns within the City Council which directly relates to the effectiveness of representation by council members. 
 
-The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, ___ members were found to have the most absences. Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
+The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, Michael Thompson, Jaye Robinson, and Vincent Crisanti were found to have the most absences Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
 The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows a graphical visualization of the data from section 2 and explains some trends that can be seen. Finally, section 4 covers interpretations of the data from section 3 and any weaknesses of this study. 
 
@@ -54,7 +54,7 @@ The raw dataset features `r ncol(raw_data)` variables and `r nrow(raw_data)` obs
 
 ## Cleaning Data
 
-After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in Section 3. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr) and ggplot2 (@ggplot2). 
+After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in Section 3. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
 
 ```{r echo=FALSE}
 #| label: tbl-cleaned-data
@@ -97,7 +97,7 @@ ggplot(absence_by_member, aes(x = reorder(name, -absence_count), y = absence_cou
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-In @fig-session-member the taller the bar is the more absences that City Council member has had while the opposite is true, the lower the bar the fewer absences. It can be seen that some members rarely miss sessions such as ___ while others, such as ___, have missed notably more. Thus, @fig-session-member shows a general idea of individual absences, this graph makes it difficult to follow trends in the future.
+In @fig-session-member the taller the bar is the more absences that City Council member has had while the opposite is true, the lower the bar the fewer absences. It can be seen that some members rarely miss sessions such as Amber Morley, Olivia Chow, and Paula Fletcher. While Michael Thompson, Jaye Robinson, and Vincent Crisanti have missed many meetings. Thus, @fig-session-member shows a general idea of individual absences, this graph makes it difficult to follow trends in the future.
 
 ## Toronto City Council absence over time since 2022
 
@@ -155,7 +155,7 @@ ggplot(absence_data, aes(x = session_type, y = absence_count)) +
 
 # Discussion
 
-@fig-session-member from Section 3 laid out the information about the absences of each Toronto City Council member. It can be seen that __ has the highest absences, while __ has the lowest. The variation between members could be problematic especially when the council member fails to represent the population. Additionally, it could suggest differences in engagement, personal schedules, or emergency circumstances. Determining those with the most absences allows steps to be taken to help better accommodate their schedules. 
+@fig-session-member from Section 3 laid out the information about the absences of each Toronto City Council member. It can be seen that Michael Thompson has the highest absences, followed by Jaye Robinson and Vincent Crisanti. While Amber Morley, Olivia Chow, and Paula Fletcher have missed few meetings. The variation between members could be problematic especially when the council member fails to represent the population. Additionally, it could suggest differences in engagement, personal schedules, or emergency circumstances. Determining those with the most absences allows steps to be taken to help better accommodate their schedules. 
 
 @fig-session-type shows that afternoon meetings have more absences than morning or evening ones. The timing of the meetings could be a factor contributing to the absences of council members. This pattern could mean that members are facing conflicting schedules. Morning sessions show a significant decrease in absences so the earlier timing could allow better attendance. Finally, evening sessions saw the lowest absence rate possibly providing an alternative meeting time. Understanding the effects of session timing on attendance would lead to better and more engaging discussions about policies as more members are present to voice their opinions. 
 

@@ -17,4 +17,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the help of the ChatGPT 4o, specifically to help generate the graphs in paper.qmd and how to cite references in a qmd file.
+Aspects of the code were written with the help of the ChatGPT 4o, specifically to help generate the graphs, clean data, and test data. More details can be found in the 'llm' folder located in 'other' folder.
