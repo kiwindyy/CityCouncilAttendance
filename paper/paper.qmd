@@ -8,6 +8,7 @@ date: "27 September 2024"
 date-format: long
 abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@ ). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences by ___ members which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
 format: pdf
+toc: true
 number-sections: true
 bibliography: references.bib
 ---
@@ -20,6 +21,7 @@ bibliography: references.bib
 library(tidyverse)
 library(dplyr)
 library(readr)
+library(ggplot2)
 
 cleaned_data <- read_csv(here::here("data/cleaned_data/cleaned_data.csv"))
 raw_data <- read_csv(here::here("data/raw_data/unedited_data.csv"))
@@ -33,32 +35,31 @@ This paper looks at the absences of Toronto City Council members since the begin
 
 The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, ___ members were found to have the most absences. Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
-The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows graphical visualization of the analysis results using data from section 2. Finally, section 4 covers interpretations of each graph from section 3 and any weaknesses of this study. 
+The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows a graphical visualization of the analysis results using data from section 2. Finally, section 4 covers interpretations of each graph from section 3 and any weaknesses of this study. 
 
 # Data {#sec-data}
 
-To investigate the attendance of Toronto City Council members data is retrieved from Open Data Toronto. The raw data contained columns of Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, Present. After importing the data into R, it was cleaned to make it more readable and contain only the necessary variables. Tests were also run on the data to make sure it is city council member data and no empty rows are there. 
+## Raw Data
 
-First, the session date was made more readable by separating the year and month. Additionally, the month was changed to the word abbreviation form. The present variable was also made more readable by changing Y to Yes and N to No. Finally, the columns of interest, committee, session year, session month, session type, and present, were selected to be created into a new cleaned dataset. 
+The data used to investigate the attendance of Toronto City Council members is from the Open Data Toronto website (@ ). To measure how much City Council members worked to voice their thoughts - their attendance was examined. The attendance data is collected by sessions, with each new session beginning when a meeting is finished. A member was labelled as present if they attended any meeting sessions. Roll calls were performed to make sure the council member was present. The data is updated when the duration of the meeting have been published. 
 
-Between the different variables, type, month and year, they each have different frequency. Understanding the frequency, can help better understand the outcome of the data. Thus, three tables were made counting how many meetings were done in each circumstance. 
+The raw dataset features 10 variables and 6071 observations. @ tbl-raw-data shows the first 10 observations of the 10 variables: _id, Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, and Present. ‘_id’ is the number associated with each observation. ‘Term’ shows which term the council members are a part of, which is 2022-2026 as this is the timeframe we are interested in. The ‘First name’ and ‘last name’ variables are the first and last names of each council member. ‘Committee’ is the committee the council member is a part of and in this paper, we are only looking at the City Council. ‘MTG #’ is the short form of meeting number. ‘Session Date’ refers to the day the session was held, in year-month-date format. ‘Session Type’ specifies whether the meeting took place during the Morning, Afternoon, or Evening. ‘Session Start-End Time’ gives the exact time the session was held. Finally, ‘Present’ marks whether the City Council member was present or absent. 
 
-```{r}
-#| label: fig-count
-#| fig-cap: Count of Number of Sessions per Year, Month, & Type
-#| echo: false
+## Cleaning Data
 
-table(cleaned_data$session_type)
+After importing the data into R (@ ) using the Open Data Toronto package (@ ), it is cleaned to keep only key variables of interest and make it easier for data analysis in Section 3. To clean the data and produce graphs with the data, the following packages in R (@ ) were used: tidyverse (@ ), dplyr (@ ), lubridate (@ ), knitr (@ ), and ggplot2 (@ ). 
 
-cleaned_data$session_month <- factor(cleaned_data$session_month, levels = month.abb)
-table(cleaned_data$session_month)
+The key variables of interest are name, committee, session year, session type, and present. First, first and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is coded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables and 3061 observations as seen in @ tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
 
-table(cleaned_data$session_year)
-```
+## Data Limitations 
 
-It can be seen that there are significantly less evening meetings while afternoon meetings are most common. Noticeably, January has no meetings likely because of external reasons. Meeting frequency of different months seem to change with no particular pattern. Finally, 2023 had the most meetings simply because it had the most time. 
+There were no similar datasets containing information about the attendance of Toronto City Council members on Open Data Toronto. If this paper were to be considered with different variables measuring the effectiveness of City Council members’ representation of the population then other datasets could be used. An example of a dataset that could have been an alternative is “City Council and Committees Meeting Schedule Reports” (@ ) which looks at the meeting schedule reports. The use of other datasets would have changed the research of this paper. 
 
-First, to analysis which meeting type is best a bar chart is created comparing morning, afternoon, and evening times. 
+A limitation faced by this dataset is that some sessions are closed sessions. Closed sessions are those “closed to the public under sections 27-38 of the Council Procedures by law” (@ ). These closed sessions could be viewed as null observations potentially altering the results of data analysis. Another limitation of this dataset is the lack of information on the reason for absence. City Council members could have valid excuses such as illness or urgent emergencies. Without this information, the conclusions lack the reasoning behind the results. 
+
+# Results
+
+## Toronto City Council member absence
 
 ```{r}
 #| label: fig-session_type
@@ -74,9 +75,9 @@ ggplot(cleaned_data, aes(x = session_type, fill = present)) +
   )
 ```
 
-@fig-session_type has x-axis as the session type and y-axis as the count of how many times each meeting type occurred. The blue bars are the number of attendances while the red bars are the number of absences. It can be seen that afternoon has the most absences but it also has the most attendance. Notably, while evenings occurrences are low it still has a decent amount of absences. From the data, meetings would be better held during the afternoon or morning for the best attendance. 
 
-Next, to find out which month had the best attendance rate a bar chart was graphed. The x-axis is the months and the y-axis is the count. 
+
+## Toronto City Council absence over time since 2022
 
 ```{r}
 #| label: fig-session_month
@@ -93,9 +94,9 @@ cleaned_data |>
   )
 ```
 
-In @fig-session_month the blue bars is the count of attendance during the month and the red bars is the count of absences. There is a rough pattern where alternating months will have higher absences, such as March, May, and July. A pattern can not be determined for the attendance rather it reflect the frequency meetings were held according to months. In conclusion, finding out what causes the pattern of absence would help increase attendance in those months. 
 
-Finally, a comparison between the years since the beginning of the term was done by plotting a bar chat. 
+
+## Toronto City Council meeting type absence 
 
 ```{r}
 #| label: fig-session_year
@@ -112,10 +113,32 @@ cleaned_data |>
   )
 ```
 
-@fig-session_year has x-axis of years and y-axis counting attendance. The blue bars is the attendance of those who went to meetings while red bars counts those absent. Like how there were many meetings conducted in 2023 there are also many absence which makes sense. Therefore, it is likely that as 2024 continues the absences will increase showing similar pattern to 2023. Meanwhile, 2022 in this bar chart show little to no absent which may be due to external factors. Overall, investigating which meeting type, month and year gives an idea as to what causes absences during meetings but more variables should be looked at to get a bigger and better picture of the circumstances.
+
+
+# Discussion
+
+
+
+## Weaknesses and next steps
+
+
+
+\newpage
+
+\appendix
+
+# Appendix {-}
+
+## Raw Data 
+
+
+
+## Cleaned Data
+
+
 
 \newpage
 
 # References
 
-TODO: figure out how to do references + in text references 
+
