@@ -35,7 +35,7 @@ This paper looks at the absences of Toronto City Council members since the begin
 
 The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, ___ members were found to have the most absences. Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
-The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows a graphical visualization of the analysis results using data from section 2. Finally, section 4 covers interpretations of each graph from section 3 and any weaknesses of this study. 
+The paper is structured as follows: section 2 discusses the raw and clean data used in the study and any limitations in the dataset. Section 3 shows a graphical visualization of the data from section 2 and explains some trends that can be seen. Finally, section 4 covers interpretations of the data from section 3 and any weaknesses of this study. 
 
 # Data {#sec-data}
 
@@ -59,10 +59,12 @@ A limitation faced by this dataset is that some sessions are closed sessions. Cl
 
 # Results
 
-## Toronto City Council member absence
+## Toronto City Council member's absence
+
+Graphs can help better understand the different relationships between each variable and the number of absences in the Toronto City Council. @ fig-session-member shows the number of absences by each Toronto City Council member in a bar graph. The graph’s x-axis represents the different members of the City Council and the y-axis is counting the number of absences. 
 
 ```{r}
-#| label: fig-session_type
+#| label: fig-session-member
 #| fig-cap: Comparison of Attendance in Morning, Afternoon, vs Evening Session
 #| echo: false
 
@@ -75,12 +77,14 @@ ggplot(cleaned_data, aes(x = session_type, fill = present)) +
   )
 ```
 
-
+In @ fig-session-member the taller the bar is the more absences that City Council member has had while the opposite is true, the lower the bar the fewer absences. This graph helps visualize the number of absences, showing no clear pattern or trend between the members. It can be seen that some members rarely miss sessions such as ___ while others, such as ___, have missed notably more. Thus, @ fig-session-member shows a general idea of individual absences, this graph makes it difficult to follow trends in the future.
 
 ## Toronto City Council absence over time since 2022
 
+To further our understanding of the data, @ fig-session-year works as a comparison between the years since the beginning of the term and member absences. The x-axis is the years since the beginning of the term and the y-axis counts the number of absences. 
+
 ```{r}
-#| label: fig-session_month
+#| label: fig-session-year
 #| fig-cap: Comparison of Attendance over Different Months
 #| echo: false
 
@@ -94,12 +98,14 @@ cleaned_data |>
   )
 ```
 
-
+The bar of 2022 in @ fig-session-year is very small meaning there were few absences during sessions in this period. It is likely due to a combination of factors but the most likely remains the accessibility to virtual meetings during the pandemic. The second bar, 2023, in the @ fig-session-year is significantly greater than 2022. Noticing the increasing trend, we predict a likely increase in absences. Interpreting the 2024 bar, it is shorter than 2023 but still greater than 2022. Knowing months are remaining in the year, it is likely that the absences in 2024 will increase, showing similar patterns to 2023.
 
 ## Toronto City Council meeting type absence 
 
+The type of session may also influence whether the City Council member is present or absent. @ fig-session-type shows the distribution of absences across different session types - morning, afternoon, and evening - in the form of a bar graph. A bar graph is used since it displays the counts of categorical data. The x-axis is the different session types and the y-axis is the number of absences for each category. @ fig-session-type shows that afternoon sessions have the highest number of absences, followed by morning sessions, while evening sessions show relatively fewer. By visualizing the data, we can examine patterns and trends that might go unnoticed and the reasons behind them.
+
 ```{r}
-#| label: fig-session_year
+#| label: fig-session-type
 #| fig-cap: Comparison of Attendance between 2022 to 2024
 #| echo: false
 
@@ -112,8 +118,6 @@ cleaned_data |>
     y = "Count"
   )
 ```
-
-
 
 # Discussion
 
