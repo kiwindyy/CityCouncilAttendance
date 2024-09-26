@@ -17,4 +17,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the help of the ChatGPT. 
+Aspects of the code were written with the help of the ChatGPT (free), specifically in documents of 00-simulate_data and 02-data_cleaning. 
