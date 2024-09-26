@@ -19,14 +19,12 @@ cleaned_data <-
   filter(committee == "City Council") |> 
   # changing present to be more readable
   mutate(present = ifelse(present == "Y", "Yes", "No")) |>
-  # removing day from date 
-  separate(col = session_date,
-           into = c("session_year", "session_month"),
-           sep = "-") |> 
-  # changing months from numbers to words
-  mutate(session_month = month.abb[as.numeric(session_month)]) |>
+  mutate(name = paste(first_name, last_name, sep = " ")) |>
+  # separate year from session_date
+  mutate(session_year = substr(session_date, 1, 4)) |> 
   # selects columns of interest
-  select(committee, session_year, session_month, session_type, present)
+  select(name, committee, session_year, session_type, present)
 
 #### Save data ####
 write_csv(cleaned_data, "data/cleaned_data/cleaned_data.csv")
+

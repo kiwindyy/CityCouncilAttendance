@@ -6,7 +6,7 @@ author:
 thanks: "GitHub repo link: https://github.com/kiwindyy/CityCouncilAttendance"
 date: "27 September 2024"
 date-format: long
-abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@ ). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences by ___ members which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
+abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@toronto-city-council-attendance). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences by ___ members which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
 format: pdf
 toc: true
 number-sections: true
@@ -31,7 +31,7 @@ raw_data <- read_csv(here::here("data/raw_data/unedited_data.csv"))
 
 The Canadian parliamentary system is a democracy, where the population is represented in government by a selection of elected officials. To maintain the democratic structure, individuals should engage in political participation to have their voices represented, primarily through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. Otherwise, failing to do so will cause a decrease in trust in the government. So, it is the job of the elected members of the Toronto City Council to attend their meetings and express the concerns of the population they represent. 
 
-This paper looks at the absences of Toronto City Council members since the beginning of the 2022 term. The data used in this paper is found on Open Data Toronto (@ ). The study examines which council members have the highest rates of absence, the fluctuation of absences over time, and which meeting type has the most absences. This paper works to fill the gap of focused analysis on absences patterns within the City Council which directly relates to the effectiveness of representation by council members. 
+This paper looks at the absences of Toronto City Council members since the beginning of the 2022 term. The data used in this paper is found on Open Data Toronto (@toronto-city-council-attendance). The study examines which council members have the highest rates of absence, the fluctuation of absences over time, and which meeting type has the most absences. This paper works to fill the gap of focused analysis on absences patterns within the City Council which directly relates to the effectiveness of representation by council members. 
 
 The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, ___ members were found to have the most absences. Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
@@ -41,108 +41,130 @@ The paper is structured as follows: section 2 discusses the raw and clean data u
 
 ## Raw Data
 
-The data used to investigate the attendance of Toronto City Council members is from the Open Data Toronto website (@ ). To measure how much City Council members worked to voice their thoughts - their attendance was examined. The attendance data is collected by sessions, with each new session beginning when a meeting is finished. A member was labelled as present if they attended any meeting sessions. Roll calls were performed to make sure the council member was present. The data is updated when the duration of the meeting have been published. 
+The data used to investigate the attendance of Toronto City Council members is from the Open Data Toronto website (@toronto-city-council-attendance). To measure how much City Council members worked to voice their thoughts - their attendance was examined. The attendance data is collected by sessions, with each new session beginning when a meeting is finished. A member was labelled as present if they attended any meeting sessions. Roll calls were performed to make sure the council member was present. The data is updated when the duration of the meeting have been published. 
 
-The raw dataset features 10 variables and 6071 observations. @ tbl-raw-data shows the first 10 observations of the 10 variables: _id, Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, and Present. ‘_id’ is the number associated with each observation. ‘Term’ shows which term the council members are a part of, which is 2022-2026 as this is the timeframe we are interested in. The ‘First name’ and ‘last name’ variables are the first and last names of each council member. ‘Committee’ is the committee the council member is a part of and in this paper, we are only looking at the City Council. ‘MTG #’ is the short form of meeting number. ‘Session Date’ refers to the day the session was held, in year-month-date format. ‘Session Type’ specifies whether the meeting took place during the Morning, Afternoon, or Evening. ‘Session Start-End Time’ gives the exact time the session was held. Finally, ‘Present’ marks whether the City Council member was present or absent. 
+
+```{r echo=FALSE}
+#| label: tbl-raw-data
+head(raw_data, 10)
+
+```
+
+The raw dataset features `r ncol(raw_data)` variables and `r nrow(raw_data)` observations. @tbl-raw-data shows the first 10 observations of the `r ncol(raw_data)` variables: _id, Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, and Present. ‘_id’ is the number associated with each observation. ‘Term’ shows which term the council members are a part of, which is 2022-2026 as this is the timeframe we are interested in. The ‘First name’ and ‘last name’ variables are the first and last names of each council member. ‘Committee’ is the committee the council member is a part of and in this paper, we are only looking at the City Council. ‘MTG #’ is the short form of meeting number. ‘Session Date’ refers to the day the session was held, in year-month-date format. ‘Session Type’ specifies whether the meeting took place during the Morning, Afternoon, or Evening. ‘Session Start-End Time’ gives the exact time the session was held. Finally, ‘Present’ marks whether the City Council member was present or absent. 
 
 ## Cleaning Data
 
-After importing the data into R (@ ) using the Open Data Toronto package (@ ), it is cleaned to keep only key variables of interest and make it easier for data analysis in Section 3. To clean the data and produce graphs with the data, the following packages in R (@ ) were used: tidyverse (@ ), dplyr (@ ), lubridate (@ ), knitr (@ ), and ggplot2 (@ ). 
+After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in Section 3. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr) and ggplot2 (@ggplot2). 
 
-The key variables of interest are name, committee, session year, session type, and present. First, first and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is coded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables and 3061 observations as seen in @ tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
+```{r echo=FALSE}
+#| label: tbl-cleaned-data
+head(cleaned_data, 10)
+
+```
+The key variables of interest are name, committee, session year, session type, and present. First and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is decoded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables as seen in @tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
 
 ## Data Limitations 
 
-There were no similar datasets containing information about the attendance of Toronto City Council members on Open Data Toronto. If this paper were to be considered with different variables measuring the effectiveness of City Council members’ representation of the population then other datasets could be used. An example of a dataset that could have been an alternative is “City Council and Committees Meeting Schedule Reports” (@ ) which looks at the meeting schedule reports. The use of other datasets would have changed the research of this paper. 
+There were no similar datasets containing information about the attendance of Toronto City Council members on Open Data Toronto. If this paper were to be considered with different variables measuring the effectiveness of City Council members’ representation of the population then other datasets could be used. An example of a dataset that could have been an alternative is “City Council and Committees Meeting Schedule Reports” (@toronto-council-attendance) which looks at the meeting schedule reports. The use of other datasets would have changed the research of this paper. 
 
-A limitation faced by this dataset is that some sessions are closed sessions. Closed sessions are those “closed to the public under sections 27-38 of the Council Procedures by law” (@ ). These closed sessions could be viewed as null observations potentially altering the results of data analysis. Another limitation of this dataset is the lack of information on the reason for absence. City Council members could have valid excuses such as illness or urgent emergencies. Without this information, the conclusions lack the reasoning behind the results. 
+A limitation faced by this dataset is that some sessions are closed sessions. Closed sessions are those “closed to the public under sections 27-38 of the Council Procedures by law” (@toronto-city-council-attendance). These closed sessions could be viewed as null observations potentially altering the results of data analysis. Another limitation of this dataset is the lack of information on the reason for absence. City Council members could have valid excuses such as illness or urgent emergencies. Without this information, the conclusions lack the reasoning behind the results. 
 
 # Results
 
 ## Toronto City Council member's absence
 
-Graphs can help better understand the different relationships between each variable and the number of absences in the Toronto City Council. @ fig-session-member shows the number of absences by each Toronto City Council member in a bar graph. The graph’s x-axis represents the different members of the City Council and the y-axis is counting the number of absences. 
+Graphs can help better understand the relationships between each variable and the number of absences in the Toronto City Council. @fig-session-member shows the number of absences by each Toronto City Council member in a bar graph. The graph’s x-axis represents the different members of the City Council and the y-axis is counting the number of absences. 
 
 ```{r}
 #| label: fig-session-member
-#| fig-cap: Comparison of Attendance in Morning, Afternoon, vs Evening Session
+#| fig-cap: Comparision of Absences by name
 #| echo: false
 
-ggplot(cleaned_data, aes(x = session_type, fill = present)) +
-  geom_bar(position = "dodge2") + 
+# Filter the data for absences (where 'present' is 'No') and count them by name
+absence_by_member <- cleaned_data %>%
+  filter(present == "No") %>%
+  group_by(name) %>%
+  summarise(absence_count = n())
+
+ggplot(absence_by_member, aes(x = reorder(name, -absence_count), y = absence_count)) +
+  geom_bar(stat = "identity", fill = "cyan3") +
   labs(
-    title = "Present vs Absence in Different Session Types",
-    x = "Session Type",
-    y = "Count"
-  )
+    title = "Number of Absences by Each Member",
+    x = "Council Member",
+    y = "Number of Absences"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-In @ fig-session-member the taller the bar is the more absences that City Council member has had while the opposite is true, the lower the bar the fewer absences. This graph helps visualize the number of absences, showing no clear pattern or trend between the members. It can be seen that some members rarely miss sessions such as ___ while others, such as ___, have missed notably more. Thus, @ fig-session-member shows a general idea of individual absences, this graph makes it difficult to follow trends in the future.
+In @fig-session-member the taller the bar is the more absences that City Council member has had while the opposite is true, the lower the bar the fewer absences. It can be seen that some members rarely miss sessions such as ___ while others, such as ___, have missed notably more. Thus, @fig-session-member shows a general idea of individual absences, this graph makes it difficult to follow trends in the future.
 
 ## Toronto City Council absence over time since 2022
 
-To further our understanding of the data, @ fig-session-year works as a comparison between the years since the beginning of the term and member absences. The x-axis is the years since the beginning of the term and the y-axis counts the number of absences. 
+To further our understanding of the data, @fig-session-year compares the number of member absences over the years since the beginning of the term. The x-axis is the years since the beginning of the term and the y-axis counts the number of absences. 
 
 ```{r}
 #| label: fig-session-year
-#| fig-cap: Comparison of Attendance over Different Months
+#| fig-cap: Comparison of Member Absences by Year
 #| echo: false
 
-cleaned_data |> 
-  ggplot(aes(x = session_month, fill = present)) +
-  geom_bar(position = "dodge2") + 
+# Filter the data to only include rows where members were absent (present == "No")
+absent_data <- cleaned_data %>%
+  filter(present == "No") %>%
+  group_by(session_year) %>%
+  summarise(absence_count = n())  # Count the number of absences by year
+
+# Create the plot
+ggplot(absent_data, aes(x = session_year, y = absence_count)) +
+  geom_bar(stat = "identity", fill = "cyan3") +  # Use a bar plot and custom color
   labs(
-    title = "Present vs Absence Over Different Months",
-    x = "Months",
-    y = "Count"
-  )
+    title = "# absence over years 2022-2024",
+    x = "Year",
+    y = "# Absences"
+  ) +
+  theme_minimal()
 ```
 
-The bar of 2022 in @ fig-session-year is very small meaning there were few absences during sessions in this period. It is likely due to a combination of factors but the most likely remains the accessibility to virtual meetings during the pandemic. The second bar, 2023, in the @ fig-session-year is significantly greater than 2022. Noticing the increasing trend, we predict a likely increase in absences. Interpreting the 2024 bar, it is shorter than 2023 but still greater than 2022. Knowing months are remaining in the year, it is likely that the absences in 2024 will increase, showing similar patterns to 2023.
+The bar of 2022 in @fig-session-year is small meaning there were few absences during sessions in this period. It is likely due to a combination of factors but the most likely remains the accessibility to virtual meetings during the pandemic. The second bar, 2023, in the @fig-session-year is significantly greater than 2022. Noticing the increasing trend, we predict a likely increase in absences. Interpreting the 2024 bar, it is shorter than 2023 but still greater than 2022. Knowing months are remaining in the year, it is likely that the absences in 2024 will increase, showing similar patterns to 2023.
 
 ## Toronto City Council meeting type absence 
 
-The type of session may also influence whether the City Council member is present or absent. @ fig-session-type shows the distribution of absences across different session types - morning, afternoon, and evening - in the form of a bar graph. A bar graph is used since it displays the counts of categorical data. The x-axis is the different session types and the y-axis is the number of absences for each category. @ fig-session-type shows that afternoon sessions have the highest number of absences, followed by morning sessions, while evening sessions show relatively fewer. By visualizing the data, we can examine patterns and trends that might go unnoticed and the reasons behind them.
+The type of session may also influence whether the City Council member is present or absent. @fig-session-type shows the distribution of absences across different session types - morning, afternoon, and evening - in the form of a bar graph. A bar graph is used since it displays the counts of categorical data. The x-axis is the different session types and the y-axis is the number of absences for each category. @fig-session-type shows that afternoon sessions have the most absences, followed by morning sessions, while evening sessions show relatively fewer. By visualizing the data, we can examine patterns and trends that might go unnoticed and the reasons behind them.
 
 ```{r}
 #| label: fig-session-type
-#| fig-cap: Comparison of Attendance between 2022 to 2024
+#| fig-cap: Comparison of Attendance by session type between 2022 to 2024
 #| echo: false
 
-cleaned_data |> 
-  ggplot(aes(x = session_year, fill = present)) +
-  geom_bar(position = "dodge") + 
+# Filter the data for absences (present == "No") and group by session type
+absence_data <- cleaned_data %>%
+  filter(present == "No") %>%
+  group_by(session_type) %>%
+  summarise(absence_count = n())  # Count the number of absences for each session type
+
+# Create the plot
+ggplot(absence_data, aes(x = session_type, y = absence_count)) +
+  geom_bar(stat = "identity", fill = "cyan3") +  # Use horizontal bar plot and a custom color
   labs(
-    title = "Present vs Absence Over Different Years",
-    x = "Years",
-    y = "Count"
-  )
+    title = "# absence of different mettings types",
+    x = "Type",
+    y = "# Absences"
+  ) +
+  theme_minimal()
 ```
 
 # Discussion
 
+@fig-session-member from Section 3 laid out the information about the absences of each Toronto City Council member. It can be seen that __ has the highest absences, while __ has the lowest. The variation between members could be problematic especially when the council member fails to represent the population. Additionally, it could suggest differences in engagement, personal schedules, or emergency circumstances. Determining those with the most absences allows steps to be taken to help better accommodate their schedules. 
 
+@fig-session-type shows that afternoon meetings have more absences than morning or evening ones. The timing of the meetings could be a factor contributing to the absences of council members. This pattern could mean that members are facing conflicting schedules. Morning sessions show a significant decrease in absences so the earlier timing could allow better attendance. Finally, evening sessions saw the lowest absence rate possibly providing an alternative meeting time. Understanding the effects of session timing on attendance would lead to better and more engaging discussions about policies as more members are present to voice their opinions. 
+
+Finally, @fig-session-year looks at the trend of absences over the year since the beginning of the term. There is an increase in absences from 2022-2023. This could be linked to pandemic-related transitions from virtual to in-person, as virtual meetings are more accessible. 2024 saw fewer absences potentially signalling post-pandemic adjustments and adapting to new conditions. Absences in 2024 could still increase in the remaining months due to session changes, holidays, and other disruptions. Overall, the data shows trends in absences for individual members and over time. Factors such as post-pandemic adjustment, scheduling conflicts and external commitments all likely contribute to the observed patterns.  Further
 
 ## Weaknesses and next steps
 
-
-
-\newpage
-
-\appendix
-
-# Appendix {-}
-
-## Raw Data 
-
-
-
-## Cleaned Data
-
-
+A key limitation of this paper is the limited scope of analysis. There is a focus on the number of absences without studying potential underlying causes. Many hidden factors, such as health and personal emergencies, likely contribute to these absences. Additionally, there lacks a deeper examination of variables such as council member’s workload, length of session and other social factors. Without these considerations, there are gaps in understanding the broader context of the absences. The next steps to improve the analysis of City Council member absence would include further investigations into the reasons behind individual absences and exploring more strategies to improve participation in future sessions. 
 
 \newpage
 
 # References
-
-
