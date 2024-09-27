@@ -1,9 +1,8 @@
 ---
-title: "Investigating Trends of Absences in Toronto City Council Attendance between 2022 to 2026"
-subtitle: "Determining the Ideal Meeting Types and Months for the 2022-2026 Term"
+title: "Maximizing Council Participation: A Study on Toronto City Council Absences (2022-2026)"
 author: 
   - Wendy Yuan
-thanks: "GitHub repo link: https://github.com/kiwindyy/CityCouncilAttendance"
+thanks: "Code and data supporting this analysis is available at: https://github.com/kiwindyy/CityCouncilAttendance"
 date: "27 September 2024"
 date-format: long
 abstract: "This paper looks at trends in absences for Toronto City Council members using data from Open Data Toronto (@toronto-city-council-attendance). The data was used to observe which members had the most absences, absences trends over the years, and what meeting types had the most absences. It was found that evening meetings saw the most absences and absences are predicted to see an increase over the years. Through identifying trends of absences, we can help minimize the number of absences which is important as when City Council members are elected, they are expected to attend meetings to voice the population’s opinions."
@@ -57,7 +56,7 @@ The raw dataset features `r ncol(raw_data)` variables and `r nrow(raw_data)` obs
 
 ## Cleaning Data
 
-After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in [@sec-results]. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
+After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in [@sec-results]. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr), randomNames (@randomNames) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
 
 ```{r echo=FALSE}
 #| label: tbl-cleaned-data

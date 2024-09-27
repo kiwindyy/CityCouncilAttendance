@@ -25,5 +25,3 @@ data
 
 #### Save data ####
 write_csv(data, "data/raw_data/unedited_data.csv") 
-
-         

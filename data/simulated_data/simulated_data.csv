@@ -1,101 +1,101 @@
-session_type,session_year,session_month,attendance
-morning,2022,11,0
-afternoon,2024,12,1
-afternoon,2024,11,0
-morning,2024,9,1
-morning,2022,4,1
-morning,2023,5,0
-morning,2023,6,1
-afternoon,2024,9,1
-afternoon,2024,5,1
-afternoon,2023,1,1
-afternoon,2024,2,1
-morning,2023,11,0
-morning,2022,12,1
-afternoon,2024,5,1
-afternoon,2024,1,1
-morning,2022,1,1
-afternoon,2023,7,1
-morning,2023,2,0
-morning,2022,3,1
-afternoon,2022,8,1
-morning,2024,3,1
-afternoon,2022,10,1
-afternoon,2024,9,1
-morning,2022,4,0
-morning,2024,12,1
-morning,2024,5,1
-afternoon,2023,10,0
-afternoon,2022,8,1
-morning,2022,3,1
-afternoon,2024,12,1
-morning,2024,9,0
-afternoon,2024,4,1
-afternoon,2024,3,1
-afternoon,2022,11,1
-morning,2024,10,1
-afternoon,2022,1,1
-morning,2023,12,0
-afternoon,2023,2,1
-afternoon,2024,5,1
-morning,2024,1,1
-afternoon,2023,1,0
-afternoon,2024,9,1
-morning,2023,11,1
-morning,2023,12,1
-morning,2022,2,1
-morning,2024,9,0
-afternoon,2024,6,0
-afternoon,2023,5,1
-afternoon,2023,9,0
-morning,2024,4,1
-morning,2024,6,0
-afternoon,2022,5,1
-morning,2022,3,1
-morning,2022,12,1
-morning,2024,12,1
-afternoon,2024,12,1
-afternoon,2022,11,1
-afternoon,2024,3,1
-afternoon,2022,9,1
-morning,2024,5,1
-morning,2023,7,1
-afternoon,2022,5,1
-morning,2023,9,0
-afternoon,2022,11,0
-morning,2022,8,1
-morning,2022,9,1
-morning,2022,7,1
-afternoon,2023,6,1
-afternoon,2024,4,1
-afternoon,2024,9,1
-afternoon,2024,2,1
-morning,2024,10,1
-afternoon,2024,3,1
-morning,2023,11,1
-afternoon,2024,5,1
-afternoon,2024,12,0
-afternoon,2023,7,1
-afternoon,2023,2,1
-afternoon,2022,11,1
-afternoon,2024,9,1
-afternoon,2022,3,1
-afternoon,2022,1,1
-afternoon,2024,7,0
-afternoon,2023,11,1
-morning,2022,5,1
-morning,2024,12,1
-morning,2022,9,0
-afternoon,2022,7,1
-afternoon,2024,5,1
-morning,2024,9,1
-afternoon,2024,3,1
-morning,2024,11,1
-afternoon,2022,4,1
-morning,2023,4,1
-morning,2022,4,0
-afternoon,2022,9,1
-morning,2022,4,1
-morning,2022,1,0
-morning,2023,1,1
-afternoon,2024,1,0
+_id,Term,First Name,Last Name,Committee,MTG #,Session Date,session_type,Session Start-End Time,Present
+1,2022-2026,Calvin,Mayfield,Executive Committee,3,2023-03-03,Morning,12:59AM - 07:17PM,Y
+2,2022-2026,Calvin,Mayfield,Audit Committee,2,2022-09-16,Evening,01:15AM - 12:01AM,N
+3,2022-2026,Sulaimaan,el-Faraj,Audit Committee,3,2022-05-27,Morning,12:59AM - 07:17PM,Y
+4,2022-2026,Kellyn,Trujillo,Audit Committee,1,2024-02-07,Afternoon,01:15AM - 12:01AM,N
+5,2022-2026,Calvin,Mayfield,Audit Committee,2,2024-04-02,Afternoon,07:18PM - 11:24PM,Y
+6,2022-2026,Calvin,Mayfield,Audit Committee,2,2022-11-02,Afternoon,07:18PM - 11:24PM,Y
+7,2022-2026,Sulaimaan,el-Faraj,City Council,3,2022-07-23,Evening,12:59AM - 07:17PM,Y
+8,2022-2026,Brianna,Park,Executive Committee,4,2024-02-07,Afternoon,07:58PM - 05:16AM,N
+9,2022-2026,Brianna,Park,Audit Committee,4,2022-11-02,Morning,07:18PM - 11:24PM,Y
+10,2022-2026,Calvin,Mayfield,City Council,1,2024-10-01,Afternoon,01:15AM - 12:01AM,Y
+11,2022-2026,Austin,Lorenzen,Toronto Parking Authority,2,2022-09-16,Evening,07:18AM - 06:58AM,N
+12,2022-2026,Kellyn,Trujillo,Executive Committee,3,2022-07-23,Morning,08:01PM - 07:37AM,N
+13,2022-2026,Neil,Leclaire,Executive Committee,3,2023-02-03,Afternoon,07:58PM - 05:16AM,Y
+14,2022-2026,Tamanna,al-Gaber,Audit Committee,4,2022-06-23,Morning,04:22AM - 02:56AM,Y
+15,2022-2026,Sulaimaan,el-Faraj,CreateTO,2,2022-09-02,Morning,12:13AM - 02:07AM,Y
+16,2022-2026,Kellyn,Trujillo,Toronto Parking Authority,1,2022-07-16,Morning,12:59AM - 07:17PM,N
+17,2022-2026,Kellyn,Trujillo,CreateTO,4,2024-12-01,Morning,12:59AM - 07:17PM,Y
+18,2022-2026,Tamanna,al-Gaber,CreateTO,2,2024-02-07,Evening,01:15AM - 12:01AM,Y
+19,2022-2026,Khiry,Archer,City Council,4,2024-10-01,Afternoon,04:22AM - 02:56AM,Y
+20,2022-2026,Sajiyya,al-Jabbar,Audit Committee,4,2024-07-04,Afternoon,07:18AM - 06:58AM,Y
+21,2022-2026,Sajiyya,al-Jabbar,Toronto Parking Authority,3,2022-09-16,Morning,12:59AM - 07:17PM,N
+22,2022-2026,Sulaimaan,el-Faraj,CreateTO,3,2022-07-23,Afternoon,07:18PM - 11:24PM,Y
+23,2022-2026,Ieeshia,Martinez,Audit Committee,2,2024-12-01,Morning,07:18PM - 11:24PM,Y
+24,2022-2026,Tamanna,al-Gaber,Toronto Parking Authority,4,2023-03-03,Morning,04:22AM - 02:56AM,Y
+25,2022-2026,Khiry,Archer,City Council,4,2024-12-03,Morning,12:36PM - 11:56AM,Y
+26,2022-2026,Austin,Lorenzen,Toronto Parking Authority,1,2024-04-02,Afternoon,12:59AM - 07:17PM,Y
+27,2022-2026,Khiry,Archer,City Council,2,2024-12-10,Morning,07:18PM - 11:24PM,Y
+28,2022-2026,Ieeshia,Martinez,Executive Committee,3,2022-09-02,Afternoon,07:18PM - 11:24PM,Y
+29,2022-2026,Tamanna,al-Gaber,Audit Committee,1,2022-07-23,Afternoon,04:22AM - 02:56AM,N
+30,2022-2026,Neil,Leclaire,CreateTO,2,2022-09-16,Afternoon,07:18PM - 11:24PM,Y
+31,2022-2026,Sulaimaan,el-Faraj,City Council,2,2024-07-04,Evening,12:36PM - 11:56AM,Y
+32,2022-2026,Kellyn,Trujillo,City Council,4,2023-02-03,Morning,04:22AM - 02:56AM,Y
+33,2022-2026,Khiry,Archer,Toronto Parking Authority,3,2022-09-02,Evening,05:17AM - 08:16AM,Y
+34,2022-2026,Sajiyya,al-Jabbar,Audit Committee,2,2024-10-01,Afternoon,01:15AM - 12:01AM,Y
+35,2022-2026,Kellyn,Trujillo,Executive Committee,2,2022-07-23,Morning,04:22AM - 02:56AM,Y
+36,2022-2026,Ieeshia,Martinez,Audit Committee,1,2022-09-02,Evening,12:36PM - 11:56AM,N
+37,2022-2026,Neil,Leclaire,CreateTO,4,2022-05-27,Afternoon,05:17AM - 08:16AM,Y
+38,2022-2026,Sulaimaan,el-Faraj,Executive Committee,2,2023-03-03,Evening,12:13AM - 02:07AM,Y
+39,2022-2026,Sajiyya,al-Jabbar,Audit Committee,3,2022-05-02,Morning,05:17AM - 08:16AM,Y
+40,2022-2026,Kellyn,Trujillo,Toronto Parking Authority,4,2022-07-23,Morning,12:59AM - 07:17PM,Y
+41,2022-2026,Brianna,Park,City Council,4,2023-02-03,Afternoon,12:36PM - 11:56AM,N
+42,2022-2026,Calvin,Mayfield,Toronto Parking Authority,1,2024-02-07,Morning,01:15AM - 12:01AM,Y
+43,2022-2026,Ieeshia,Martinez,Toronto Parking Authority,3,2022-07-16,Morning,12:59AM - 07:17PM,Y
+44,2022-2026,Khiry,Archer,Toronto Parking Authority,4,2022-05-27,Afternoon,08:01PM - 07:37AM,Y
+45,2022-2026,Tamanna,al-Gaber,Audit Committee,3,2022-06-24,Afternoon,01:15AM - 12:01AM,N
+46,2022-2026,Neil,Leclaire,Audit Committee,1,2024-10-01,Afternoon,07:18PM - 11:24PM,Y
+47,2022-2026,Ieeshia,Martinez,Executive Committee,4,2024-10-01,Morning,07:58PM - 05:16AM,N
+48,2022-2026,Kellyn,Trujillo,Executive Committee,2,2022-11-02,Morning,05:17AM - 08:16AM,N
+49,2022-2026,Khiry,Archer,Audit Committee,2,2023-02-03,Evening,01:15AM - 12:01AM,N
+50,2022-2026,Sulaimaan,el-Faraj,Audit Committee,3,2024-12-01,Evening,07:58PM - 05:16AM,Y
+51,2022-2026,Neil,Leclaire,CreateTO,1,2024-12-01,Afternoon,01:15AM - 12:01AM,N
+52,2022-2026,Brianna,Park,CreateTO,2,2024-10-01,Afternoon,05:17AM - 08:16AM,N
+53,2022-2026,Khiry,Archer,City Council,2,2022-11-02,Morning,12:13AM - 02:07AM,Y
+54,2022-2026,Tamanna,al-Gaber,Executive Committee,4,2022-11-02,Afternoon,07:18AM - 06:58AM,Y
+55,2022-2026,Khiry,Archer,Audit Committee,4,2022-05-02,Morning,01:15AM - 12:01AM,Y
+56,2022-2026,Brianna,Park,Audit Committee,1,2022-05-27,Morning,08:01PM - 07:37AM,Y
+57,2022-2026,Ieeshia,Martinez,Audit Committee,4,2022-05-02,Afternoon,05:17AM - 08:16AM,Y
+58,2022-2026,Austin,Lorenzen,CreateTO,2,2024-07-04,Afternoon,07:18AM - 06:58AM,Y
+59,2022-2026,Kellyn,Trujillo,City Council,1,2024-04-02,Morning,01:15AM - 12:01AM,Y
+60,2022-2026,Austin,Lorenzen,Executive Committee,3,2022-09-16,Morning,12:36PM - 11:56AM,N
+61,2022-2026,Neil,Leclaire,Audit Committee,4,2022-06-23,Morning,12:13AM - 02:07AM,Y
+62,2022-2026,Sajiyya,al-Jabbar,Executive Committee,3,2022-09-02,Morning,12:13AM - 02:07AM,N
+63,2022-2026,Neil,Leclaire,Toronto Parking Authority,2,2024-10-01,Afternoon,12:13AM - 02:07AM,Y
+64,2022-2026,Ieeshia,Martinez,Audit Committee,4,2024-03-21,Morning,08:01PM - 07:37AM,Y
+65,2022-2026,Brianna,Park,Executive Committee,3,2024-02-07,Afternoon,04:22AM - 02:56AM,Y
+66,2022-2026,Khiry,Archer,Audit Committee,4,2022-09-02,Morning,07:18AM - 06:58AM,Y
+67,2022-2026,Austin,Lorenzen,City Council,4,2022-09-16,Morning,05:17AM - 08:16AM,Y
+68,2022-2026,Brianna,Park,Executive Committee,1,2024-02-07,Evening,08:01PM - 07:37AM,Y
+69,2022-2026,Kellyn,Trujillo,CreateTO,1,2024-10-01,Morning,07:18PM - 11:24PM,Y
+70,2022-2026,Austin,Lorenzen,CreateTO,4,2022-07-23,Morning,07:58PM - 05:16AM,Y
+71,2022-2026,Sulaimaan,el-Faraj,Audit Committee,3,2022-09-16,Evening,12:13AM - 02:07AM,N
+72,2022-2026,Sajiyya,al-Jabbar,City Council,1,2022-05-02,Afternoon,12:13AM - 02:07AM,Y
+73,2022-2026,Brianna,Park,Executive Committee,1,2024-12-03,Afternoon,07:58PM - 05:16AM,Y
+74,2022-2026,Sajiyya,al-Jabbar,Audit Committee,4,2024-12-10,Afternoon,12:59AM - 07:17PM,Y
+75,2022-2026,Austin,Lorenzen,Toronto Parking Authority,1,2022-11-02,Afternoon,04:22AM - 02:56AM,Y
+76,2022-2026,Austin,Lorenzen,Executive Committee,2,2022-05-27,Morning,12:59AM - 07:17PM,N
+77,2022-2026,Tamanna,al-Gaber,Toronto Parking Authority,2,2024-04-02,Morning,05:17AM - 08:16AM,Y
+78,2022-2026,Ieeshia,Martinez,City Council,4,2022-11-02,Afternoon,01:15AM - 12:01AM,N
+79,2022-2026,Neil,Leclaire,Executive Committee,4,2023-03-03,Morning,07:58PM - 05:16AM,Y
+80,2022-2026,Khiry,Archer,City Council,1,2023-05-03,Morning,07:58PM - 05:16AM,Y
+81,2022-2026,Kellyn,Trujillo,City Council,3,2024-12-03,Morning,07:58PM - 05:16AM,Y
+82,2022-2026,Sulaimaan,el-Faraj,CreateTO,1,2022-05-27,Afternoon,04:22AM - 02:56AM,Y
+83,2022-2026,Sulaimaan,el-Faraj,Audit Committee,3,2022-06-23,Afternoon,07:18PM - 11:24PM,Y
+84,2022-2026,Khiry,Archer,Executive Committee,2,2022-11-02,Morning,05:17AM - 08:16AM,Y
+85,2022-2026,Tamanna,al-Gaber,CreateTO,1,2022-06-24,Afternoon,01:15AM - 12:01AM,N
+86,2022-2026,Austin,Lorenzen,City Council,2,2022-09-16,Morning,01:15AM - 12:01AM,Y
+87,2022-2026,Neil,Leclaire,City Council,2,2022-07-23,Morning,08:01PM - 07:37AM,Y
+88,2022-2026,Khiry,Archer,Toronto Parking Authority,1,2022-05-27,Afternoon,07:18AM - 06:58AM,N
+89,2022-2026,Neil,Leclaire,City Council,3,2024-12-03,Evening,12:36PM - 11:56AM,Y
+90,2022-2026,Austin,Lorenzen,Toronto Parking Authority,4,2022-09-16,Morning,07:18PM - 11:24PM,Y
+91,2022-2026,Khiry,Archer,Executive Committee,4,2024-02-07,Morning,07:58PM - 05:16AM,Y
+92,2022-2026,Sulaimaan,el-Faraj,Executive Committee,3,2024-12-10,Evening,07:58PM - 05:16AM,N
+93,2022-2026,Austin,Lorenzen,Executive Committee,3,2022-09-02,Afternoon,07:18PM - 11:24PM,Y
+94,2022-2026,Ieeshia,Martinez,Executive Committee,3,2022-07-23,Morning,12:36PM - 11:56AM,Y
+95,2022-2026,Brianna,Park,City Council,1,2023-05-03,Afternoon,12:36PM - 11:56AM,Y
+96,2022-2026,Kellyn,Trujillo,CreateTO,3,2022-09-02,Afternoon,04:22AM - 02:56AM,Y
+97,2022-2026,Austin,Lorenzen,Toronto Parking Authority,2,2022-11-02,Afternoon,08:01PM - 07:37AM,Y
+98,2022-2026,Sulaimaan,el-Faraj,City Council,3,2022-07-16,Afternoon,01:15AM - 12:01AM,Y
+99,2022-2026,Calvin,Mayfield,Executive Committee,4,2024-04-02,Morning,12:36PM - 11:56AM,Y
+100,2022-2026,Austin,Lorenzen,CreateTO,2,2024-07-04,Afternoon,01:15AM - 12:01AM,Y
