@@ -146,6 +146,8 @@ ggplot(absence_data, aes(x = session_type, y = absence_count)) +
   theme_minimal()
 ```
 
+\newpage
+
 # Discussion {#sec-discussion}
 
 @fig-session-member from [@sec-results] laid out the information about the absences of each Toronto City Council member. It can be seen that Michael Thompson has the highest absences, followed by Jaye Robinson and Vincent Crisanti. While Amber Morley, Olivia Chow, and Paula Fletcher have missed few meetings. The variation between members could be problematic especially when the council member fails to represent the population. Additionally, it could suggest differences in engagement, personal schedules, or emergency circumstances. Determining those with the most absences allows steps to be taken to help better accommodate their schedules. 
