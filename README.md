@@ -2,7 +2,7 @@
 
 ## Overview
 
-This paper aims to observe trends in Toronto City Council meeting attendance. Drawn from data available on Open Data Toronto and using R to analysis the data, many trends can be found. By identifying trends in absences, meetings can be scheduled more effectively to have most members present. First, the data was organized, removing unnecessary variables and updated to make existing ones more readable. Producing graphs showed results of higher rates of absences in evening meetings. 2022 as the beginning of this term showed low absence rates whereas 2023 contrasted with high absences. Finally, data displayed trends of high attendance every other month. Avoiding periods of lower attendance can help maximize the efficiency of meetings. 
+This paper examines trends in meeting absences for the Toronto City Council from 2022 to 2026 using data from Open Data Toronto. The study analyzes the absences of council members and patterns across meeting types and times. Individual council members' absence records are compared, with members like Michael Thompson and Jaye Robinson showing higher rates. Results show that afternoon sessions have the highest absence rates and found an increase in absences since 2022. By understanding these trends, future meetings can be scheduled more strategically to improve attendance and ensure effective representation.
 
 ## File Structure
 
@@ -17,4 +17,4 @@ The repo is structured as:
 
 ## Statement on LLM usage
 
-Aspects of the code were written with the help of the ChatGPT 4o, specifically to help generate the graphs, clean data, and test data. More details can be found in the 'llm' folder located in 'other' folder.
+Aspects of the code were written with the help of the ChatGPT 4o, specifically to help generate the graphs, clean data, and test data. Chat history is available in other/llm/usage.txt.
