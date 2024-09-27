@@ -48,7 +48,7 @@ The data used to investigate the attendance of Toronto City Council members is f
 #| tbl-cap: Raw Data of Toronto City Council Members' Attendance
 
 # generate first 10 observations of raw data
-kable(head(raw_data, 10)) 
+kable(head(raw_data, 10))
 ```
 
 The raw dataset features `r ncol(raw_data)` variables and `r nrow(raw_data)` observations. @tbl-raw-data shows the first 10 observations of the `r ncol(raw_data)` variables: _id, Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, and Present. ‘_id’ is the number associated with each observation. ‘Term’ shows which term the council members are a part of, which is 2022-2026 as this is the timeframe we are interested in. The ‘First name’ and ‘last name’ variables are the first and last names of each council member. ‘Committee’ is the committee the council member is a part of and in this paper, we are only looking at the City Council. ‘MTG #’ is the short form of meeting number. ‘Session Date’ refers to the day the session was held, in year-month-date format. ‘Session Type’ specifies whether the meeting took place during the Morning, Afternoon, or Evening. ‘Session Start-End Time’ gives the exact time the session was held. Finally, ‘Present’ marks whether the City Council member was present or absent. 
@@ -79,7 +79,8 @@ absence_by_member <- cleaned_data %>%
   summarise(absence_count = n())
 
 # generate graph for number of absences by each member
-ggplot(absence_by_member, aes(x = reorder(name, -absence_count), y = absence_count)) +
+ggplot(absence_by_member, aes(x = reorder(name, -absence_count),
+                              y = absence_count)) +
   geom_bar(stat = "identity", fill = "cyan3") +
   labs(
     title = "Number of Absences by Each Member",
@@ -101,7 +102,7 @@ To further our understanding of the data, @fig-session-year compares the number 
 #| fig-cap: Comparison of Absences by Year
 #| echo: false
 
-# Filter the data to only include rows where members were absent (present == "No")
+# Filter data to only include rows where members were absent (present == "No")
 absent_data <- cleaned_data %>%
   filter(present == "No") %>%
   group_by(session_year) %>%
@@ -109,7 +110,8 @@ absent_data <- cleaned_data %>%
 
 # Create the plot
 ggplot(absent_data, aes(x = session_year, y = absence_count)) +
-  geom_bar(stat = "identity", fill = "cyan3") +  # Use a bar plot and custom color
+  # Use a bar plot and custom color
+  geom_bar(stat = "identity", fill = "cyan3") +
   labs(
     title = "Number of Absence Over Years 2022-2024",
     x = "Year",
@@ -133,11 +135,13 @@ The type of session may also influence whether the City Council member is presen
 absence_data <- cleaned_data %>%
   filter(present == "No") %>%
   group_by(session_type) %>%
-  summarise(absence_count = n())  # Count the number of absences for each session type
+  # Count the number of absences for each session type
+  summarise(absence_count = n())
 
 # Create the plot
 ggplot(absence_data, aes(x = session_type, y = absence_count)) +
-  geom_bar(stat = "identity", fill = "cyan3") +  # Use horizontal bar plot and a custom color
+  # Use horizontal bar plot and a custom color
+  geom_bar(stat = "identity", fill = "cyan3") +
   labs(
     title = "Number Absence for Different Meetings Types",
     x = "Session Type",
@@ -171,7 +175,7 @@ A key limitation of this paper is the limited scope of analysis. There is a focu
 #| tbl-cap: Cleaned Data of Toronto City Council Members' Attendance
 
 # generate first 10 observations of cleaned data
-kable(head(raw_data, 10)) 
+kable(head(raw_data, 10))
 ```
 
 First and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is decoded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables as seen in @tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
