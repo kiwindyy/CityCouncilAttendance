@@ -1,4 +1,4 @@
-# Investigating Trends of Absences in Toronto City Council Attendance between 2022 to 2024
+# Investigating Trends of Absences in Toronto City Council Attendance between 2022 to 2026
 
 ## Overview
 
