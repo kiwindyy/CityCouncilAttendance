@@ -1,4 +1,4 @@
-_id,Term,First Name,Last Name,Committee,MTG #,Session Date,session_type,Session Start-End Time,Present
+_id,Term,First Name,Last Name,Committee,MTG #,Session Date,Session Type,Session Start-End Time,Present
 1,2022-2026,Calvin,Mayfield,Executive Committee,3,2023-03-03,Morning,12:59AM - 07:17PM,Y
 2,2022-2026,Calvin,Mayfield,Audit Committee,2,2022-09-16,Evening,01:15AM - 12:01AM,N
 3,2022-2026,Sulaimaan,el-Faraj,Audit Committee,3,2022-05-27,Morning,12:59AM - 07:17PM,Y
