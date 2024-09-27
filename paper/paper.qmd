@@ -29,20 +29,19 @@ raw_data <- read_csv(here::here("data/raw_data/unedited_data.csv"))
 
 # Introduction {#sec-intro}
 
-The Canadian parliamentary system is a democracy, where the population is represented in government by a selection of elected officials. To maintain the democratic structure, individuals should engage in political participation to have their voices represented, primarily through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. Otherwise, failing to do so will cause a decrease in trust in the government. So, it is the job of the elected members of the Toronto City Council to attend their meetings and express the concerns of the population they represent. 
+The Canadian parliamentary system is a democracy, where the population is represented in government by a selection of elected officials. To maintain the democratic structure, individuals should engage in political participation to have their voices represented, primarily through voting. Likewise, elected officials should uphold their duty of representing the opinions of those who voted them in. Otherwise, failing to do so will cause a decrease in trust in the government. There are 3 levels of governments in Canada: federal, provincial, and municipal. The municipal government works on a city-wide scale, directly working to address local concerns. So, it is the job of the elected members of the Toronto City Council to attend their meetings and express the concerns of the population they represent. 
 
 This paper looks at the absences of Toronto City Council members since the beginning of the 2022 term. The data used in this paper is found on Open Data Toronto (@toronto-city-council-attendance). The study examines which council members have the highest rates of absence, the fluctuation of absences over time, and which meeting type has the most absences. This paper works to fill the gap of focused analysis on absences patterns within the City Council which directly relates to the effectiveness of representation by council members. 
 
 The data analysis focuses on examining patterns in the data for various causes of absences. It was found that evening meetings experienced the most absences and the trend over the years shows that absences are likely to increase in 2022. Additionally, Michael Thompson, Jaye Robinson, and Vincent Crisanti were found to have the most absences Rather than blaming individuals for absences, understanding these patterns allows for future targeted meeting scheduling to minimize absences. This ensures that elected officials are present to represent the voices of the general. 
 
-The paper is structured as follows: [@sec-data] discusses the raw and clean data used in the study and any limitations in the dataset. [@sec-results] shows a graphical visualization of the data from [@sec-data] and explains some trends that can be seen. Finally, [@sec-discussion] covers interpretations of the data from [@sec-results] and any weaknesses of this study. 
+The paper is structured as follows: [@sec-data] discusses the raw and clean data used in the study and any limitations in the dataset. [@sec-results] shows a graphical visualization of the data from [@sec-data] and explains some trends that can be seen. Next, [@sec-discussion] covers interpretations of the data from [@sec-results] and any weaknesses of this study. Finally, [@sec-appendix] includes additional supporting data and [@sec-references] contains the references used in this paper. 
 
 # Data {#sec-data}
 
 ## Raw Data
 
 The data used to investigate the attendance of Toronto City Council members is from the Open Data Toronto website (@toronto-city-council-attendance). To measure how much City Council members worked to voice their thoughts - their attendance was examined. The attendance data is collected by sessions, with each new session beginning when a meeting is finished. A member was labelled as present if they attended any meeting sessions. Roll calls were performed to make sure the council member was present. The data is updated when the duration of the meeting have been published. 
-
 
 ```{r echo=FALSE}
 #| label: tbl-raw-data
@@ -54,18 +53,7 @@ kable(head(raw_data, 10))
 
 The raw dataset features `r ncol(raw_data)` variables and `r nrow(raw_data)` observations. @tbl-raw-data shows the first 10 observations of the `r ncol(raw_data)` variables: _id, Term, First Name, Last Name, Committee, MTG #, Session Date, Session Type, Session Start-End Time, and Present. ‘_id’ is the number associated with each observation. ‘Term’ shows which term the council members are a part of, which is 2022-2026 as this is the timeframe we are interested in. The ‘First name’ and ‘last name’ variables are the first and last names of each council member. ‘Committee’ is the committee the council member is a part of and in this paper, we are only looking at the City Council. ‘MTG #’ is the short form of meeting number. ‘Session Date’ refers to the day the session was held, in year-month-date format. ‘Session Type’ specifies whether the meeting took place during the Morning, Afternoon, or Evening. ‘Session Start-End Time’ gives the exact time the session was held. Finally, ‘Present’ marks whether the City Council member was present or absent. 
 
-## Cleaning Data
-
-After importing the data into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in [@sec-results]. To clean the data and produce graphs with the data, the following packages in R (@citeR) were used: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr), randomNames (@randomNames) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
-
-```{r echo=FALSE}
-#| label: tbl-cleaned-data
-#| tbl-cap: Cleaned Data of Toronto City Council Members' Attendance
-
-# generate first 10 observations of cleaned data
-kable(head(raw_data, 10)) 
-```
-The key variables of interest are name, committee, session year, session type, and present. First and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is decoded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables as seen in @tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
+The data was into R (@citeR) using the Open Data Toronto package (@OpenDataToronto), it is cleaned to keep only key variables of interest and make it easier for data analysis in [@sec-results]. The key variables of interest are name, committee, session year, session type, and present. @tbl-cleaned-data shows first 10 observations of the cleaned data and [@sec-appendix] explains in more detail how the data was cleaned. The following packages in R (@citeR) were used in the data analysis process: tidyverse (@tidyverse), dplyr (@dplyr), lubridate (@lubridate), knitr (@knitr), readr (@readr), randomNames (@randomNames) and ggplot2 (@ggplot2). ChatGPT (@ChatGPT) was used to help the coding of cleaning, testing, and graphing data. 
 
 ## Data Limitations 
 
@@ -172,4 +160,20 @@ A key limitation of this paper is the limited scope of analysis. There is a focu
 
 \newpage
 
-# References
+# Appendix {#sec-appendix}
+
+## Cleaning Data
+
+```{r echo=FALSE}
+#| label: tbl-cleaned-data
+#| tbl-cap: Cleaned Data of Toronto City Council Members' Attendance
+
+# generate first 10 observations of cleaned data
+kable(head(raw_data, 10)) 
+```
+
+First and last names of City Council members are combined into 1 variable to make it easier to read in graphs. Then, the session date is decoded to separate the year, month and date - keeping only the year. When cleaning the data, only the columns of interest were selected to be in the newly cleaned dataset. The cleaned dataset consists of 5 variables as seen in @tbl-cleaned-data. Tests are run on the cleaned dataset to ensure there are no empty rows & that the remaining observations consist of only City Council members’ data.  
+
+\newpage
+
+# References {#sec-references}
